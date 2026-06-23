@@ -211,3 +211,55 @@ footer {
     align-items: center;
   }
 }
+/* =========================
+   SCROLL ANIMATIONS
+========================= */
+
+.hidden {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+
+.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =========================
+   MOBILE MENU FIX (IMPROVED)
+========================= */
+
+.nav-links {
+  transition: all 0.3s ease;
+}
+
+/* Mobile behavior */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .menu-btn {
+    align-self: flex-end;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;   /* FIX: ensures vertical list when opened */
+    width: 100%;
+    gap: 15px;
+    padding: 10px 0;
+    background: #0b3d2e;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links li {
+    width: 100%;
+    text-align: center;
+  }
+   }
