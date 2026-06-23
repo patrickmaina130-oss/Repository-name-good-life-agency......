@@ -1,69 +1,70 @@
-/* ================================
-   GOOD LIFE AGENCY - INTERACTIVE JS
-   SAFE UPGRADE (NO BREAKING CHANGES)
-================================ */
+document.addEventListener("DOMContentLoaded", function () {
 
-/* Smooth page load log */
-console.log("Good Life Agency site loaded successfully 🚀");
+  /* =========================
+     MOBILE NAV TOGGLE
+  ========================= */
 
+  const navbar = document.querySelector(".navbar");
+  const navLinks = document.querySelector(".nav-links");
 
-/* ================================
-   ACTIVE NAV LINK ON SCROLL (SCROLL SPY)
-================================ */
+  // Create hamburger button dynamically
+  const menuBtn = document.createElement("div");
+  menuBtn.classList.add("menu-btn");
+  menuBtn.innerHTML = "☰";
+  menuBtn.style.fontSize = "28px";
+  menuBtn.style.color = "white";
+  menuBtn.style.cursor = "pointer";
 
-const sections = document.querySelectorAll("section");
-const navLinks = document.querySelectorAll(".nav-links a");
+  navbar.prepend(menuBtn);
 
-window.addEventListener("scroll", () => {
-  let current = "";
-
-  sections.forEach(section => {
-    const sectionTop = section.offsetTop - 120;
-    const sectionHeight = section.clientHeight;
-
-    if (pageYOffset >= sectionTop) {
-      current = section.getAttribute("id");
-    }
+  menuBtn.addEventListener("click", () => {
+    navLinks.classList.toggle("active");
   });
 
-  navLinks.forEach(link => {
-    link.classList.remove("active");
-    if (link.getAttribute("href").includes(current)) {
-      link.classList.add("active");
-    }
-  });
-});
+  /* =========================
+     SMOOTH SCROLL
+  ========================= */
 
+  const links = document.querySelectorAll(".nav-links a");
 
-/* ================================
-   SMOOTH SCROLL ENHANCEMENT (SAFETY)
-================================ */
-
-navLinks.forEach(link => {
-  link.addEventListener("click", function (e) {
-    const targetId = this.getAttribute("href");
-
-    if (targetId.startsWith("#")) {
+  links.forEach(link => {
+    link.addEventListener("click", function (e) {
       e.preventDefault();
 
-      document.querySelector(targetId).scrollIntoView({
-        behavior: "smooth"
-      });
-    }
+      const targetId = this.getAttribute("href").replace("#", "");
+      const targetSection = document.getElementById(targetId);
+
+      if (targetSection) {
+        window.scrollTo({
+          top: targetSection.offsetTop - 70,
+          behavior: "smooth"
+        });
+      }
+
+      // close mobile menu after click
+      navLinks.classList.remove("active");
+    });
   });
-});
 
+  /* =========================
+     SCROLL ANIMATION (FADE IN)
+  ========================= */
 
-/* ================================
-   BACK TO TOP BUTTON AUTO SHOW (OPTIONAL UPGRADE)
-================================ */
+  const sections = document.querySelectorAll("section");
 
-const topBtn = document.querySelector("button");
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+      }
+    });
+  }, {
+    threshold: 0.2
+  });
 
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 300) {
-    topBtn.style.display = "block";
-  } else {
-    topBtn.style.display = "none";
-  }
+  sections.forEach(section => {
+    section.classList.add("hidden");
+    observer.observe(section);
+  });
+
 });
