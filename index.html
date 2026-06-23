@@ -4,15 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Good Life Commercial Agency | Kenya Tours, Real Estate & Jobs</title>
+<title>Good Life Commercial Agency | Kenya Tours & Travel</title>
 
-<!-- SEO -->
-<meta name="description" content="Good Life Commercial Agency - Kenya tours, safari packages, real estate listings, overseas jobs, and community services.">
-<meta name="keywords" content="Kenya tours, safari Kenya, Maasai Mara, Diani Beach, real estate Kenya, jobs abroad Kenya, travel agency Nairobi">
+<meta name="description" content="Good Life Commercial Agency - Kenya tours, safari packages, real estate, jobs abroad and community services.">
 
 <style>
 
-/* GLOBAL */
+/* RESET */
 * {
   margin: 0;
   padding: 0;
@@ -26,6 +24,60 @@ body {
   scroll-behavior: smooth;
 }
 
+/* ===== POPUP ===== */
+.popup {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  animation: fadeOutPopup 5s forwards;
+}
+
+.popup-content {
+  background: linear-gradient(135deg, #0b3d91, #1e90ff);
+  color: white;
+  padding: 25px;
+  border-radius: 12px;
+  text-align: center;
+  width: 80%;
+  max-width: 420px;
+  animation: popupScale 0.6s ease;
+}
+
+/* ===== BANNERS ===== */
+.top-banner {
+  width: 100%;
+  background: linear-gradient(270deg, #ff0080, #ff8c00, #00c6ff, #7d2ae8);
+  background-size: 400% 400%;
+  animation: gradientFlow 8s ease infinite;
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 10px 0;
+}
+
+.sub-banner {
+  width: 100%;
+  background: linear-gradient(270deg, #00c6ff, #0072ff, #7d2ae8);
+  background-size: 400% 400%;
+  animation: gradientFlow 10s ease infinite;
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 8px 0;
+}
+
+.scroll-text {
+  display: inline-block;
+  padding-left: 100%;
+  animation: scrollLeft 18s linear infinite;
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+}
+
 /* HEADER */
 header {
   background: linear-gradient(135deg, #0b3d91, #1e90ff);
@@ -34,20 +86,17 @@ header {
   padding: 20px;
 }
 
-header h1 {
-  font-size: 28px;
-}
-
 /* NAV */
 nav {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  background: white;
-  padding: 10px;
   position: sticky;
   top: 0;
   z-index: 1000;
+  background: white;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
 nav a {
@@ -62,20 +111,16 @@ nav a {
   background: url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee') center/cover;
   color: white;
   text-align: center;
-  padding: 110px 20px;
+  padding: 120px 20px;
 }
 
 .hero h2 {
   font-size: 42px;
 }
 
-.hero p {
-  font-size: 18px;
-}
-
 /* SECTIONS */
 section {
-  padding: 50px 20px;
+  padding: 60px 20px;
   max-width: 1100px;
   margin: auto;
 }
@@ -84,7 +129,7 @@ section {
   text-align: center;
   font-size: 28px;
   color: #0b3d91;
-  margin-bottom: 25px;
+  margin-bottom: 30px;
 }
 
 /* GRID */
@@ -100,11 +145,11 @@ section {
   padding: 15px;
   border-radius: 12px;
   box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-  transition: 0.3s;
+  transition: 0.4s;
 }
 
 .card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-10px);
 }
 
 .card img {
@@ -131,22 +176,35 @@ section {
   border-radius: 10px;
 }
 
-/* ABOUT + TRUST */
-.simple-box {
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  margin-top: 20px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-}
-
 /* FOOTER */
 footer {
   background: #0b3d91;
   color: white;
   text-align: center;
   padding: 15px;
-  margin-top: 30px;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes scrollLeft {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-100%); }
+}
+
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes popupScale {
+  from { transform: scale(0.7); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes fadeOutPopup {
+  0% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { opacity: 0; visibility: hidden; }
 }
 
 /* MOBILE */
@@ -166,149 +224,86 @@ footer {
 
 <body>
 
+<!-- POPUP -->
+<div class="popup">
+  <div class="popup-content">
+    <h2>🌍 Welcome to Good Life Agency</h2>
+    <p>Kenya Tours • Real Estate • Jobs Abroad</p>
+    <p>📞 0705 365 075</p>
+  </div>
+</div>
+
+<!-- BANNERS -->
+<div class="top-banner">
+  <div class="scroll-text">
+    🌍 Welcome • Kenya Tours • Real Estate • Jobs Abroad • Call 0705 365 075 • Trusted Agency • Affordable Deals •
+  </div>
+</div>
+
+<div class="sub-banner">
+  <div class="scroll-text">
+    ⭐ Maasai Mara • Diani Beach • Mount Kenya • Verified Properties • Overseas Jobs •
+  </div>
+</div>
+
 <header>
   <h1>Good Life Commercial Agency</h1>
-  <p>Licensed Travel & Business Agency in Kenya</p>
+  <p>Kenya Tours • Real Estate • Jobs Abroad • Community Services</p>
 </header>
 
 <nav>
   <a href="#tourism">Tours</a>
   <a href="#realestate">Real Estate</a>
   <a href="#jobs">Jobs</a>
-  <a href="#charity">Charity</a>
-  <a href="#about">About</a>
   <a href="#contact">Contact</a>
 </nav>
 
 <div class="hero">
   <h2>Explore Kenya & Beyond</h2>
-  <p>Affordable tours, verified properties, and global job opportunities</p>
 </div>
 
-<!-- TOURISM -->
 <section id="tourism">
-  <h2 class="title">🌍 Kenya Tour Packages</h2>
-
+  <h2 class="title">🌍 Tours</h2>
   <div class="grid">
-
     <div class="card">
       <img src="https://images.unsplash.com/photo-1548013146-72479768bada">
-      <h3>Maasai Mara Safari (3 Days)</h3>
-      <p>Game drives, Big Five experience, and Great Migration.</p>
-      <p><b>Price:</b> KES 28,000</p>
+      <h3>Maasai Mara</h3>
+      <p>Big Five safari experience.</p>
     </div>
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21">
-      <h3>Diani Beach Holiday</h3>
-      <p>Relax in Kenya’s top coastal destination.</p>
-      <p><b>Price:</b> KES 18,500</p>
-    </div>
-
   </div>
 </section>
 
-<!-- REAL ESTATE -->
 <section id="realestate">
-  <h2 class="title">🏠 Verified Real Estate</h2>
-
+  <h2 class="title">🏠 Real Estate</h2>
   <div class="grid">
-
     <div class="card">
       <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa">
-      <h3>2 Bedroom Apartment – Nairobi</h3>
-      <p>Kilimani modern apartment, secure & furnished.</p>
-      <p><b>Rent:</b> KES 55,000/month</p>
+      <h3>Nairobi Apartment</h3>
     </div>
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1507089947368-19c1da9775ae">
-      <h3>Land – Kitengela</h3>
-      <p>50x100 plots ready for development.</p>
-      <p><b>Price:</b> KES 1.2M</p>
-    </div>
-
   </div>
 </section>
 
-<!-- JOBS -->
 <section id="jobs">
   <h2 class="title">💼 Jobs Abroad</h2>
-
   <div class="grid">
-
     <div class="card">
       <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d">
       <h3>Dubai Jobs</h3>
-      <p>Hospitality, drivers, cleaners & hotel staff.</p>
-      <p><b>Salary:</b> KES 80,000 – 150,000</p>
     </div>
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1">
-      <h3>Europe Care Jobs</h3>
-      <p>Elderly care and support work.</p>
-      <p><b>Salary:</b> KES 120,000+</p>
-    </div>
-
   </div>
 </section>
 
-<!-- CHARITY -->
-<section id="charity">
-  <h2 class="title">🤝 Community Work</h2>
-
-  <div class="grid">
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1529070538774-1843cb3265df">
-      <h3>School Support</h3>
-      <p>Helping needy students with books & uniforms.</p>
-    </div>
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a">
-      <h3>Community Outreach</h3>
-      <p>Food donation and clean water projects.</p>
-    </div>
-
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section id="about">
-  <h2 class="title">About Us</h2>
-  <div class="simple-box">
-    <p>
-      Good Life Commercial Agency is a Kenya-based travel and business company offering
-      safari tours, real estate services, overseas job placements, and community development programs.
-    </p>
-  </div>
-
-  <div class="simple-box">
-    <b>Why Choose Us:</b>
-    <p>✔ Trusted & Reliable Services</p>
-    <p>✔ Affordable Tour Packages</p>
-    <p>✔ Verified Real Estate Listings</p>
-    <p>✔ Secure Job Processing</p>
-  </div>
-</section>
-
-<!-- CONTACT -->
 <section id="contact">
-  <h2 class="title">📞 Contact Us</h2>
-
+  <h2 class="title">📞 Contact</h2>
   <div class="contact">
-    <p><b>Phone:</b> 0705 365 075</p>
-    <p><b>Location:</b> Nairobi, Kenya</p>
-    <p><b>WhatsApp:</b></p>
-    <a class="btn" href="https://wa.me/254705365075">Chat on WhatsApp</a>
+    <p>0705 365 075</p>
+    <a class="btn" href="https://wa.me/254705365075">WhatsApp</a>
   </div>
 </section>
 
 <footer>
-  <p>© 2026 Good Life Commercial Agency | Kenya Travel & Business Services</p>
+  <p>© 2026 Good Life Commercial Agency</p>
 </footer>
 
 </body>
-  </html>
+</html>
