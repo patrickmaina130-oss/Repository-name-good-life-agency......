@@ -1,60 +1,69 @@
-document.addEventListener("DOMContentLoaded", function () {
+/* ================================
+   GOOD LIFE AGENCY - INTERACTIVE JS
+   SAFE UPGRADE (NO BREAKING CHANGES)
+================================ */
 
-  // 🌍 AUTO-HIDE WELCOME POPUP
-  const popup = document.getElementById("popup");
+/* Smooth page load log */
+console.log("Good Life Agency site loaded successfully 🚀");
 
-  if (popup) {
-    setTimeout(() => {
-      popup.style.opacity = "0";
-      popup.style.transition = "0.5s ease";
 
-      setTimeout(() => {
-        popup.style.display = "none";
-      }, 600);
+/* ================================
+   ACTIVE NAV LINK ON SCROLL (SCROLL SPY)
+================================ */
 
-    }, 4000); // popup shows for 4 seconds
-  }
+const sections = document.querySelectorAll("section");
+const navLinks = document.querySelectorAll(".nav-links a");
 
-  // 🔗 SMOOTH SCROLL FOR NAV LINKS
-  const links = document.querySelectorAll("nav a");
+window.addEventListener("scroll", () => {
+  let current = "";
 
-  links.forEach(link => {
-    link.addEventListener("click", function (e) {
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop - 120;
+    const sectionHeight = section.clientHeight;
+
+    if (pageYOffset >= sectionTop) {
+      current = section.getAttribute("id");
+    }
+  });
+
+  navLinks.forEach(link => {
+    link.classList.remove("active");
+    if (link.getAttribute("href").includes(current)) {
+      link.classList.add("active");
+    }
+  });
+});
+
+
+/* ================================
+   SMOOTH SCROLL ENHANCEMENT (SAFETY)
+================================ */
+
+navLinks.forEach(link => {
+  link.addEventListener("click", function (e) {
+    const targetId = this.getAttribute("href");
+
+    if (targetId.startsWith("#")) {
       e.preventDefault();
 
-      const targetId = this.getAttribute("href");
-      const target = document.querySelector(targetId);
-
-      if (target) {
-        window.scrollTo({
-          top: target.offsetTop - 70,
-          behavior: "smooth"
-        });
-      }
-    });
+      document.querySelector(targetId).scrollIntoView({
+        behavior: "smooth"
+      });
+    }
   });
+});
 
-  // 🌟 HIGHLIGHT ACTIVE SECTION ON SCROLL (basic UX improvement)
-  const sections = document.querySelectorAll("section");
 
-  window.addEventListener("scroll", () => {
-    let current = "";
+/* ================================
+   BACK TO TOP BUTTON AUTO SHOW (OPTIONAL UPGRADE)
+================================ */
 
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop - 100;
+const topBtn = document.querySelector("button");
 
-      if (pageYOffset >= sectionTop) {
-        current = section.getAttribute("id");
-      }
-    });
-
-    links.forEach(link => {
-      link.classList.remove("active");
-
-      if (link.getAttribute("href") === "#" + current) {
-        link.classList.add("active");
-      }
-    });
-  });
-
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 300) {
+    topBtn.style.display = "block";
+  } else {
+    topBtn.style.display = "none";
+  }
 });
