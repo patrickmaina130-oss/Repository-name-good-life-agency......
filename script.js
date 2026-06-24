@@ -68,3 +68,22 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 });
+/* =========================
+   HERO IMAGE SLIDER
+========================= */
+
+let currentSlide = 0;
+const slides = document.querySelectorAll(".hero-slide");
+
+function showSlide(index) {
+  slides.forEach(slide => slide.classList.remove("active"));
+  slides[index].classList.add("active");
+}
+
+function nextSlide() {
+  currentSlide = (currentSlide + 1) % slides.length;
+  showSlide(currentSlide);
+}
+
+// Auto change every 4 seconds
+setInterval(nextSlide, 4000);
